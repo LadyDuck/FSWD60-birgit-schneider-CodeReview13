@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class = "container">
+    
+<div class="card" >
+  <img class="card-img-top h-100" src="{{ event.image }}" alt="{{event.name}}">
+  <div class="card-body">
+    <h3 class="card-title text-danger">{{ event.name }}</h3>
+    <h5>{{ event.streetname }} {{ event.streetnumber }}, {{event.postalcode}} {{event.city}} </h5>
+    
+    <p class="card-text">{{ event.description }}</p>
+    <p class="card-text"><strong class= "text-danger">Start: </strong> <strong> {{ event.startDate|date('D d. M. Y') }} at {{ event.startDate|date('H:i') }}</strong> </p>
+    <p class = "card-text"><strong></strong></p>
+      
+      <p class = "card-text"><strong class= "text-danger">Contact: </strong><strong>{{ event.contact }}</strong></p>
+      <p class = "card-text"><strong class= "text-danger">Phone: </strong><strong>{{ event.phonenumber }}</strong></p>
+      <p class = "card-text"><strong class= "text-danger">Capacity: </strong><strong>{{ event.capacity }} persons</strong></p>
+      <p class = "card-text"><strong class= "text-danger">Eventtype: </strong><strong>{{ event.eventType }}</strong></p>
+      
+<!--      <div class="d-flex justify-content-between align-items-center">-->
+          
+    <div class = "row">
+        
+        <button type="button" class="btn btn-secondary form-inline my-2 my-lg-0 ml-3 mr-1"><a class="text-white" href="{{ path('event_index') }}">back</a></button>
+          
+        <button type="button" class="btn btn-success form-inline my-2 my-lg-0 mx-1"><a class="text-white" href="{{ path('event_edit', { 'id': event.id }) }}">edit</a></button>
+        
+        {{ form_start(delete_form) }}
+                <input class="btn btn-danger form-inline my-2 my-lg-0 mx-1" role="button" type="submit" value="Delete">
+        {{ form_end(delete_form) }}  
+        
+    </div>
+      
+  
+{% endblock %}

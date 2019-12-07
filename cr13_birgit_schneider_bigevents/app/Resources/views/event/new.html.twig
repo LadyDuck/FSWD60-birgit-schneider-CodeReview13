@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class = "container">
+    <h1 class = "text-center text-danger">Event creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input class="btn btn-danger mb-4" type="submit" role="button" value="Create Event" />
+    {{ form_end(form) }}
+    
+{% endblock %}
+
+{% block stylesheets %}
+
+<style>
+
+
+</style>
+
+{% endblock %}
