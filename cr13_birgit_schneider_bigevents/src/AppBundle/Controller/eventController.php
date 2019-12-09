@@ -5,7 +5,9 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\event;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 /**
  * Event controller.
@@ -135,4 +137,35 @@ class eventController extends Controller
             ->getForm()
         ;
     }
+    
+    
+     /**
+     * Lists all event by category.
+     *
+     * @Route("/filter/{eventType}", name="event_category")
+     * @Method("GET")
+     */
+    public function filterAction($eventType)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $events = $em->getRepository('AppBundle:event')->findBy(array('eventType' => $eventType));
+
+        return $this->render('event/index.html.twig', array(
+            'events' => $events,
+        ));
+    }
+    
+    
+# Versuch Filter zu machen:
+    
+//    public function filterAction() {
+//        $form2 = $this->createFormBuilder(null)
+//            ->add('filter', ChoiceType::class, array('choices'=>array('Music'=>'Music', 'Sport'=>'Sport', 'Exhibition'=>'Exhibition', 'Movie'=>'Movie', 'Theater'=>'Theater' ),'attr' => array('class'=> 'form-control', 'style'=>'margin-botton:15px')))
+//        ->get Form();
+//    
+//    return $this->render('AppBundle:Post:SearchBar', ['form' => $form->createView()]);    
+//    
+//    }
+    
 }

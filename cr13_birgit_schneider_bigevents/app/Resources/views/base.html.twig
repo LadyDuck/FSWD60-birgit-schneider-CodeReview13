@@ -18,7 +18,7 @@
     <style>
         
         body {
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
     
     .bd-placeholder-img {
@@ -36,14 +36,20 @@
         }
       }
         
-        .navbar .navbar-toggler-icon {
+        .bg-dark {
+            background-color: #DC3545 !important;
+           
+        }
+        
+        .bg-dark a {
             color: white !important;
         }
+        
+       
+        a.dropdown-item {
+            color: black !important;
+        }
 
-    .bg-danger a {
-        color: white !important;
-    }
-    
     .jumbotron {
         height: 500px;
         background-image: url("https://cdn.pixabay.com/photo/2014/07/09/12/17/live-concert-388160_1280.jpg");
@@ -78,18 +84,45 @@
       padding: 5px;
     }
         
+     ul {
+        list-style: none;
+    }
         
-         
-         
-         
+     .left {
+        float: left;
+    }
+
+    .right {
+        float: right;
+    }
+        
+    #legalnav li {
+        float: right;
+        margin: 0px 5px;
+        font-size: 1em;
+        color: #DC3545;
+    }
+    #legalnav li a {
+        text-decoration: none;
+        color: black;
+        font-size: 1em;
+    }
+
+    #legalnav li a:hover{
+        text-decoration: underline;
+    }
+    .social {
+        height: 25px;
+    }
+    .social:hover {
+        height: 35px;
+    }
+        
+
+               
 </style>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-      
-      <style>
-      
-    </style>
-      
-      
+         
   </head>
 
   <body>
@@ -98,9 +131,9 @@
 
     <header>
       <!-- Fixed navbar -->
-      <nav class="navbar navbar-expand-md bg-danger text-white">
+      <nav class="navbar navbar-expand-md bg-dark nav-dark text-white">
         <a class="navbar-brand" href="/event"><span class="t1">Big</span><span class="t2 text-white"> Events </span></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler text-white" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -112,6 +145,19 @@
               <a class="nav-link" href="{{ path('event_new') }}">Add Event</a>
             </li>
           </ul>
+            
+             <form class="form-inline my-2 my-lg-0">
+              <div class="dropdown">
+                  <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Filter by Category
+                  </button>
+                  <div class="dropdown-menu text-dark" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href=" /event/filter/music">Music</a>
+                    <a class="dropdown-item" href="/event/filter/theater">Theater</a>
+                    <a class="dropdown-item" href="/event/filter/exhibition">Exhibition</a>
+                </div>
+             </div>
+            </form>
           
         </div>
       </nav>
@@ -137,7 +183,23 @@
             
         </div>
         
-      </div>
+          <hr class="clearleft" id="footerhr">
+                <ul class="nav justify-content-center">
+                    <p id="company">&copy;Global Event Management, Inc.</p>
+               
+                <div class="right">
+                    <ul id="legalnav">
+                        <li><img src="{{ asset('images/instagram.png') }}" class="social"></li>
+                        <li><img src="{{ asset('images/twitter.png') }}" class="social"></li>
+                        <li><img src="{{ asset('images/facebook.png') }}" class="social"></li>
+                        <li><a href="#">Sitemap</a></li>
+                        <li><a href="#">Datenschutz</a></li>
+                        <li><a href="#">Nutzungsbedingungen</a></li>
+                    </ul>
+                </div>
+
+        
+     
        
     </div>
       
